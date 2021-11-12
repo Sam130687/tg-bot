@@ -39,11 +39,11 @@ const keyboard = [
     ]
   ];
 
-bot.hears('Хочу кота', ctx => {
+bot.hears('Хочу кота', (ctx) => {
     ctx.reply('А может лучше кошку?')
 });
 
-bot.hears('Хочу песика', ctx => {
+bot.hears('Хочу песика', (ctx) => {
     ctx.reply('А кормить его будешь?')
 });
 
@@ -70,6 +70,13 @@ bot.on('message', (ctx) => {
         reply_markup: {
             inline_keyboard: keyboard
         }});
+});
+
+bot.on('text', (ctx) => {
+    ctx.replyWithHTML(
+        `Вы действительно хотите добавить задачу:\n\n`+
+        `<i>${ctx.message.text}</i>`
+    )
 });
 
 const secretPath = `/telegraf/${bot.secretPathComponent()}`;
