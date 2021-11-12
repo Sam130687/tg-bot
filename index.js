@@ -40,9 +40,9 @@ const keyboard = [
   ];
 
 // Обработчик нажатий на клавиатуру
-bot.on('callback_query', (query) => {
+bot.on('callback_query', (ctx) => {
     
-    ctx.reply(query.data);
+    ctx.reply('query.data');
   });  
 
 bot.on('message', (ctx) => {
