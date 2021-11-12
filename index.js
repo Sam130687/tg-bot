@@ -46,7 +46,14 @@ bot.on('callback_query', (query) => {
   });  
 
 bot.on('message', (ctx) => {
-    ctx.reply('You send ' + ctx.update.message, { // прикрутим клаву
+    let txt = '';
+
+    for (var key in ctx.update.message) {
+     
+        txt = txt + "Ключ: " + key + " значение: " + ctx.update.message[key];
+      }
+
+    ctx.reply('You send ' + txt, { // прикрутим клаву
         reply_markup: {
             inline_keyboard: keyboard
         }});
