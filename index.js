@@ -42,7 +42,12 @@ const keyboard = [
 // Обработчик нажатий на клавиатуру
 bot.on('callback_query', (ctx) => {
     
-    ctx.reply('query.data');
+    for (var key in ctx.update.message) {
+     
+        txt = txt + "Ключ: " + key + " значение: " + ctx.update.message[key];
+      }
+
+    ctx.reply(txt);
   });  
 
 bot.on('message', (ctx) => {
