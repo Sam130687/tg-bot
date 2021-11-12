@@ -40,37 +40,13 @@ const keyboard = [
   ];
 
 // Обработчик нажатий на клавиатуру
-bot.on('callback_query', (query) => {
-    const chatId = query.message.chat.id;
-  
-    let img = '';
-  
-    if (query.data === 'moreKeks') { // если кот
-      img = 'keks.png';
-    }
-  
-    if (query.data === 'morePes') { // если пёс
-      img = 'pes.png';
-    }
-  
-    if (img) {
-      bot.sendMessage(chatId, img, { // прикрутим клаву
-        reply_markup: {
-          inline_keyboard: keyboard
-        }
-      });
-    } else {
-      bot.sendMessage(chatId, 'Непонятно, давай попробуем ещё раз?', {
-        // прикрутим клаву
-        reply_markup: {
-          inline_keyboard: keyboard
-        }
-      });
-    }
+bot.on('callback_query', (ctx) => {
+    
+    ctx.reply(ctx.update.data);
   });  
 
 bot.on('message', (ctx) => {
-    ctx.reply('You send ' + ctx.query.message, { // прикрутим клаву
+    ctx.reply('You send ' + ctx.update.message, { // прикрутим клаву
         reply_markup: {
             inline_keyboard: keyboard
         }});
