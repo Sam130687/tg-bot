@@ -39,6 +39,14 @@ const keyboard = [
     ]
   ];
 
+bot.hears('Хочу кота', ctx => {
+    ctx.reply('А может лучше кошку?')
+});
+
+bot.hears('Хочу песика', ctx => {
+    ctx.reply('А кормить его будешь?')
+});
+
 // Обработчик нажатий на клавиатуру
 bot.on('callback_query', (ctx) => {
     
